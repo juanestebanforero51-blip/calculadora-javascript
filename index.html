@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="calc-wrapper">
+    <div class="calc">
+
+      <div class="display">
+        <div class="display-expr" id="expr"></div>
+        <div class="display-value" id="display">0</div>
+      </div>
+
+      <div class="grid">
+        <!-- Fila 1 -->
+        <button class="btn btn-util" data-action="clear">AC</button>
+        <button class="btn btn-util" data-action="sign">+/−</button>
+        <button class="btn btn-util" data-action="percent">%</button>
+        <button class="btn btn-op"   data-action="op" data-value="÷">÷</button>
+
+        <!-- Fila 2 -->
+        <button class="btn btn-num"  data-action="num" data-value="7">7</button>
+        <button class="btn btn-num"  data-action="num" data-value="8">8</button>
+        <button class="btn btn-num"  data-action="num" data-value="9">9</button>
+        <button class="btn btn-op"   data-action="op" data-value="×">×</button>
+
+        <!-- Fila 3 -->
+        <button class="btn btn-num"  data-action="num" data-value="4">4</button>
+        <button class="btn btn-num"  data-action="num" data-value="5">5</button>
+        <button class="btn btn-num"  data-action="num" data-value="6">6</button>
+        <button class="btn btn-op"   data-action="op" data-value="−">−</button>
+
+        <!-- Fila 4 -->
+        <button class="btn btn-num"  data-action="num" data-value="1">1</button>
+        <button class="btn btn-num"  data-action="num" data-value="2">2</button>
+        <button class="btn btn-num"  data-action="num" data-value="3">3</button>
+        <button class="btn btn-op"   data-action="op" data-value="+">+</button>
+
+        <!-- Fila 5 -->
+        <button class="btn btn-num btn-zero" data-action="num" data-value="0">0</button>
+        <button class="btn btn-num btn-dot"  data-action="dot">.</button>
+        <button class="btn btn-eq"           data-action="equals">=</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

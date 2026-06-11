@@ -1,0 +1,212 @@
+/* ── Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Body ── */
+body {
+  background: #0D0D0D;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ── Wrapper con glow ambiental ── */
+.calc-wrapper {
+  position: relative;
+}
+
+.calc-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: -40px;
+  background: radial-gradient(ellipse at 50% 60%, rgba(200, 255, 0, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+/* ── Cuerpo de la calculadora ── */
+.calc {
+  background: #141414;
+  border-radius: 24px;
+  border: 1px solid #2A2A2A;
+  width: 320px;
+  padding: 24px;
+  box-shadow:
+    0 0 0 1px rgba(200, 255, 0, 0.04),
+    0 40px 80px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* ── Display ── */
+.display {
+  background: #0D0D0D;
+  border-radius: 14px;
+  padding: 18px 20px 14px;
+  margin-bottom: 20px;
+  border: 1px solid #1E1E1E;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.display-expr {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 13px;
+  color: #555;
+  min-height: 18px;
+  letter-spacing: 0.02em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.display-value {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 44px;
+  font-weight: 700;
+  color: #F0F0F0;
+  line-height: 1;
+  margin-top: 4px;
+  transition: color 0.15s ease;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.display-value.accent {
+  color: #C8FF00;
+}
+
+.display-value.error {
+  color: #FF5A5A;
+  font-size: 28px;
+}
+
+/* ── Grid de botones ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+/* ── Botón base ── */
+.btn {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+  border: none;
+  border-radius: 12px;
+  height: 64px;
+  cursor: pointer;
+  transition: transform 0.08s ease, background 0.1s ease, box-shadow 0.1s ease;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0);
+  transition: background 0.1s ease;
+  border-radius: inherit;
+}
+
+.btn:active {
+  transform: scale(0.93);
+}
+
+.btn:active::after {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ── Variantes de botón ── */
+
+/* Número */
+.btn-num {
+  background: #1F1F1F;
+  color: #EFEFEF;
+  border: 1px solid #2C2C2C;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.btn-num:hover {
+  background: #272727;
+}
+
+/* Operador */
+.btn-op {
+  background: #242424;
+  color: #C8FF00;
+  border: 1px solid #313131;
+  font-size: 20px;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.btn-op:hover {
+  background: #2C2C2C;
+}
+
+/* Utilidad: AC, +/−, % */
+.btn-util {
+  background: #252525;
+  color: #AAAAAA;
+  border: 1px solid #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.btn-util:hover {
+  background: #2D2D2D;
+  color: #CCCCCC;
+}
+
+/* Igual */
+.btn-eq {
+  background: #C8FF00;
+  color: #0D0D0D;
+  font-size: 22px;
+  font-weight: 700;
+  border: none;
+  box-shadow:
+    0 0 20px rgba(200, 255, 0, 0.25),
+    0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.btn-eq:hover {
+  background: #D4FF2A;
+  box-shadow:
+    0 0 28px rgba(200, 255, 0, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Cero: ocupa 2 columnas */
+.btn-zero {
+  grid-column: span 2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 24px;
+  text-align: left;
+}
+
+/* Punto decimal */
+.btn-dot {
+  font-size: 22px;
+}
